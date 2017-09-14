@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: configserver
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      server:
+        git:
+          uri: @git.uri.dev@
+          username: @git.username.dev@
+          password: @git.password.dev@
+          clone-on-start: true
+# Config server Authentication
+security:
+  user:
+    name: @configserver.username.dev@
+    password: @configserver.password.dev@ 
+---
+spring:
+  profiles: ide
+  cloud:
+     config:
+      server:
+        git:
+          uri: @git.uri.ide@
+          username: @git.username.ide@
+          password: @git.password.ide@
+          clone-on-start: true
+# Config server Authentication
+security:
+  user:
+    name: @configserver.username.ide@
+    password: @configserver.password.ide@ 
+---
+spring:
+  profiles: localdocker
+  cloud:
+    config:
+      server:
+        git:
+          uri: @git.uri.localdocker@
+          username: @git.username.localdocker@
+          password: @git.password.localdocker@
+          clone-on-start: true
+# Config server Authentication
+security:
+  user:
+    name: @configserver.username.localdocker@
+    password: @configserver.password.localdocker@ 
+---
+spring:
+  profiles: prod
+  cloud:
+    config:
+      server:
+        git:
+          uri: @git.uri.prod@
+          username: @git.username.prod@
+          password: @git.password.prod@
+          clone-on-start: true
+# Config server Authentication
+security:
+  user:
+    name: @configserver.username.prod@
+    password: @configserver.password.prod@ 

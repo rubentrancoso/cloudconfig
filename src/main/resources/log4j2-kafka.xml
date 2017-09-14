@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- https://logging.apache.org/log4j/2.x/manual/lookups.html -->
+<Configuration status="INFO"
+	packages="org.apache.logging.log4j.core.layout" verbose="false">
+
+	<Appenders>
+		<Kafka name="Kafka" topic="log-test">
+      		<PatternLayout pattern="%date %message"/>
+        	<Property name="bootstrap.servers">localhost:9092</Property>
+    	</Kafka>
+    	<Async name="AsyncKafka">
+      		<AppenderRef ref="Kafka"/>
+    	</Async>    	
+	</Appenders>
+	
+	<Loggers>
+		<Root level="INFO">
+			<AppenderRef ref="AsyncKafka" />
+		</Root>
+	</Loggers>
+	
+</Configuration>
