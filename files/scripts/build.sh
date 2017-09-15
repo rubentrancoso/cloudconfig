@@ -4,4 +4,4 @@
 # you must have internet access
 #
 cd ../..
-mvn clean install docker:build -DskipTests
+mvn clean resources:resources package docker:build -DskipTests
