@@ -4,7 +4,9 @@ development
 
 # VM Arguments
 
+```
 -Dhttps.proxyHost=<proxyserver>s -Dhttps.proxyPort=8080 -Dhttp.proxyUser=<username> -Dhttp.proxyPassword=<password>
+```
 
 # Acccessing configs
 
@@ -13,12 +15,15 @@ development
  http://localhost:8200/config-reader/dev/master
  
 # How to build
- 
+
+ ```
  mvn clean resources:resources package docker:build -DskipTests
- 
+ ```
+
 # How to run
- 
- #!/bin/bash
+
+```
+#!/bin/bash
 PROXY_USERNAME=<proxyuser>
 PROXY_PASSWORD=<proxypass>
 PROXY_HTTPS_SERVER=<proxyhost>
@@ -27,8 +32,8 @@ PROXY_DEFINES="-Dhttps.proxyHost=$PROXY_HTTPS_SERVER -Dhttps.proxyPort=$PROXY_HT
 PROFILE=dev
 
 docker stop cloudconfig; docker rm cloudconfig; docker run -d --net dev --name cloudconfig -p 8200:8080 --env JAVA_OPTS="$PROXY_DEFINES" --restart=always registry.cmpn.paas.gsnetcloud.corp/chaosmonkey/cloudconfig; docker logs -f cloudconfig
+``` 
  
+# TODO
  
- # TODO
- 
-  fetch on change
+fetch on change
