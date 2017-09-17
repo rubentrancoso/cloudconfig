@@ -1,19 +1,21 @@
-Spring Profile
- development
+# Spring Profile
 
-VM Arguments
- -Dhttps.proxyHost=<proxyserver>s -Dhttps.proxyPort=8080 -Dhttp.proxyUser=<username> -Dhttp.proxyPassword=<password>
+development
 
-Configs
+# VM Arguments
+
+-Dhttps.proxyHost=<proxyserver>s -Dhttps.proxyPort=8080 -Dhttp.proxyUser=<username> -Dhttp.proxyPassword=<password>
+
+# Configs
 
  http://localhost:8200/master/config-reader-dev.yml 
  http://localhost:8200/config-reader/dev/master
  
- How to build
+# How to build
  
  mvn clean resources:resources package docker:build -DskipTests
  
- How to run
+# How to run
  
  #!/bin/bash
 PROXY_USERNAME=<proxyuser>
@@ -26,8 +28,6 @@ PROFILE=dev
 docker stop cloudconfig; docker rm cloudconfig; docker run -d --net dev --name cloudconfig -p 8200:8080 --env JAVA_OPTS="$PROXY_DEFINES" --restart=always registry.cmpn.paas.gsnetcloud.corp/chaosmonkey/cloudconfig; docker logs -f cloudconfig
  
  
- 
- 
- TODO
+ # TODO
  
   fetch on change
